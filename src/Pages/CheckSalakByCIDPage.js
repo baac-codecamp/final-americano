@@ -9,8 +9,8 @@ import { checkSalakByCID } from "../Asset/Wording";
 class CheckSalakByCIDPage extends React.Component {
   constructor(props) {
     super(props);
-    this.status = {
-      isSubmitForm: false,
+    this.state = {
+      isSubmit: false,
     };
   }
   render() {
@@ -19,20 +19,18 @@ class CheckSalakByCIDPage extends React.Component {
       <Layout>
         <Header isHomePage={false} />
         <div className="header-image-cover nav">
-          <div className="header-image">
-          </div>
+          <div className="header-image"></div>
         </div>
         <Content
           className="site-layout"
           style={{ padding: "0 50px", marginTop: 24 }}
         >
-              <div className="title-page">{checkSalakByCID}</div>
+          <div className="title-page">{checkSalakByCID}</div>
           <div
             className="site-layout-background"
             style={{ padding: 24, minHeight: 380 }}
           >
-            {/* {this.state.isSubmitForm ? <ResultFormCID /> : <InputFormCID />} */}
-            <InputFormCID />
+            {this.state.isSubmit ? <ResultFormCID /> : <InputFormCID />}
           </div>
         </Content>
         <Footer />

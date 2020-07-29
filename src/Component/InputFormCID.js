@@ -37,7 +37,7 @@ class InputFormCID extends React.Component {
                 { required: true, message: "กรุณากรอกหมายเลขบัตรประชาชน" },
               ]}
             >
-              <InputNumber />
+              <InputNumber style={{ width: "100%" }} />
             </Form.Item>
             <Form.Item
               label="วัน/เดือน/ปีเกิด"
@@ -49,12 +49,13 @@ class InputFormCID extends React.Component {
               <DatePicker
                 defaultValue={moment("2015/01/01", dateFormat)}
                 format={dateFormat}
+                style={{ width: "100%" }}
               />
             </Form.Item>
 
             <Form.Item {...tailLayout}>
               <Button type="primary" htmlType="submit">
-                Submit
+                ตรวจ
               </Button>
             </Form.Item>
           </Form>
