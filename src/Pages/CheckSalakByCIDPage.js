@@ -13,6 +13,12 @@ class CheckSalakByCIDPage extends React.Component {
       isSubmit: false,
     };
   }
+
+  onSubmitForm = (cid, dateOfBirth) => {
+    console.log("main page: ", cid, dateOfBirth);
+    this.setState({ isSubmit: true });
+  };
+
   render() {
     const { Content } = Layout;
     return (
@@ -30,7 +36,11 @@ class CheckSalakByCIDPage extends React.Component {
             className="site-layout-background"
             style={{ padding: 24, minHeight: 380 }}
           >
-            {this.state.isSubmit ? <ResultFormCID /> : <InputFormCID />}
+            {this.state.isSubmit ? (
+              <ResultFormCID />
+            ) : (
+              <InputFormCID onSubmitForm={this.onSubmitForm} />
+            )}
           </div>
         </Content>
         <Footer />

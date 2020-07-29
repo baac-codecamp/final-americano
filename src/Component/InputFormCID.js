@@ -9,6 +9,7 @@ class InputFormCID extends React.Component {
 
   onFinish = (values) => {
     console.log("Success:", values);
+    this.props.onSubmitForm(values.cid, values.dateofbirth);
   };
 
   render() {
