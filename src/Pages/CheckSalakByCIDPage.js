@@ -4,7 +4,7 @@ import Footer from "../Component/Footer";
 import Header from "../Component/Header";
 import InputFormCID from "../Component/InputFormCID";
 import ResultFormCID from "../Component/ResultFormCID";
-import { checkSalakByCID } from "../Asset/Wording";
+import { menuList } from "../Asset/Wording";
 
 class CheckSalakByCIDPage extends React.Component {
   constructor(props) {
@@ -31,7 +31,7 @@ class CheckSalakByCIDPage extends React.Component {
           className="site-layout"
           style={{ padding: "0 50px", marginTop: 24 }}
         >
-          <div className="title-page">{checkSalakByCID}</div>
+          <div className="title-page">{menuList[1].name}</div>
           <div
             className="site-layout-background"
             style={{ padding: 24, minHeight: 380 }}

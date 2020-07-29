@@ -1,9 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import NewsSection from "../Component/NewsSection";
 import Footer from "../Component/Footer";
 import Header from "../Component/Header";
 import { Layout, Button } from "antd";
-import { menuList, checkSalakByCID, checkSalakBySelf } from "../Asset/Wording";
+import { menuList } from "../Asset/Wording";
 
 class HomePage extends React.Component {
   constructor() {
@@ -19,10 +20,10 @@ class HomePage extends React.Component {
           <div className="header-image">
             <div className="header-content">
               <Button className="btn-header-section mr-40" size="large">
-                {checkSalakByCID}
+                <Link to={menuList[1].url}>{menuList[1].name}</Link>
               </Button>
               <Button className="btn-header-section" size="large">
-                {checkSalakBySelf}
+                <Link to={menuList[2].url}>{menuList[2].name}</Link>
               </Button>
             </div>
           </div>
