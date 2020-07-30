@@ -30,7 +30,9 @@ class Header extends React.Component {
         style={{ position: "fixed", zIndex: 1, width: "100%" }}
         className={classNav}
       >
-        <img src={logo} className="logo" />
+        <Link to={menuList[0].url}>
+          <img src={logo} className="logo" />
+        </Link>
         <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["0"]}>
           {menuList.map((item, key) => (
             <Menu.Item key={key}>

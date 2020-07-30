@@ -2,12 +2,23 @@ import React from "react";
 import { Layout } from "antd";
 import Footer from "../Component/Footer";
 import Header from "../Component/Header";
+import InputFormSelf from "../Component/InputFormSelf";
+import ResultFormSelf from "../Component/ResultFormSelf";
 import { menuList } from "../Asset/Wording";
 
-class CheckSalakBySelfPage extends React.Component {
-  constructor() {
-    super();
+class CheckSalakByCIDPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isSubmit: false,
+    };
   }
+
+  onSubmitForm = (dateOfRound) => {
+    console.log("main page: ", dateOfRound);
+    this.setState({ isSubmit: true });
+  };
+
   render() {
     const { Content } = Layout;
     return (
@@ -25,7 +36,9 @@ class CheckSalakBySelfPage extends React.Component {
             className="site-layout-background"
             style={{ padding: 24, minHeight: 380 }}
           >
-            {menuList[2].name}
+            <InputFormSelf onSubmitForm={this.onSubmitForm} />
+            {/* {this.state.isSubmit && <ResultFormSelf />} */}
+            <ResultFormSelf />
           </div>
         </Content>
         <Footer />
@@ -33,4 +46,4 @@ class CheckSalakBySelfPage extends React.Component {
     );
   }
 }
-export default CheckSalakBySelfPage;
+export default CheckSalakByCIDPage;
