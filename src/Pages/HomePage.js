@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import NewsSection from "../Component/NewsSection";
+import NewsCard from "../Component/NewsCard";
 import Footer from "../Component/Footer";
 import Header from "../Component/Header";
 import { Layout, Button } from "antd";
-import { menuList } from "../Asset/Wording";
+import { menuList, newsList } from "../Asset/Data";
 
 class HomePage extends React.Component {
   constructor() {
@@ -36,11 +36,11 @@ class HomePage extends React.Component {
             className="site-layout-background"
             style={{ padding: 24, minHeight: 380 }}
           >
-            <div className="title">
+            <div className="home-title">
               <div className="title-text">{menuList[3].name}</div>
             </div>
             <div style={{ marginTop: 24 }}>
-              <NewsSection />
+              <NewsCard news={newsList.slice(0, 4)} />
             </div>
           </div>
         </Content>

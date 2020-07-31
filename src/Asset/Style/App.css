@@ -40,8 +40,9 @@
   font-weight: 600;
 }
 
-.ant-card-cover img {
-  height: 200px;
+.ant-card-cover {
+  height: 250px;
+  overflow: hidden;
 }
 
 /* ---------------------------- */
@@ -124,7 +125,7 @@
   background-color: rgba(0, 0, 0, 0.5) !important;
 }
 
-.title {
+.home-title {
   border-bottom: #49af49 solid 1px;
 }
 
@@ -162,4 +163,16 @@ td {
 
 .check-by-self .award {
   height: 50px;
+}
+
+.news-detail .title {
+  font-size: 24px;
+  color: #49af49;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.news-detail .description {
+  margin-top: 24px;
+  font-size: 16px;
 }

@@ -4,7 +4,7 @@ import Footer from "../Component/Footer";
 import Header from "../Component/Header";
 import InputFormSelf from "../Component/InputFormSelf";
 import ResultFormSelf from "../Component/ResultFormSelf";
-import { menuList } from "../Asset/Wording";
+import { menuList } from "../Asset/Data";
 
 class CheckSalakByCIDPage extends React.Component {
   constructor(props) {

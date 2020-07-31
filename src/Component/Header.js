@@ -2,7 +2,7 @@ import React from "react";
 import { Layout, Menu } from "antd";
 import { Link } from "react-router-dom";
 import logo from "../Asset/Image/logo salak 2.png";
-import { menuList } from "../Asset/Wording";
+import { menuList } from "../Asset/Data";
 
 class Header extends React.Component {
   constructor(props) {
