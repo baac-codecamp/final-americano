@@ -10,8 +10,18 @@ class NewsPage extends React.Component {
     super();
     this.state = {
       current: 1,
+      minValue: 0,
+      maxValue: limitNews
     };
   }
+
+  handleChange = (value) => {
+    console.log(value);
+    this.setState({
+      minValue: (value - 1) * limitNews,
+      maxValue: value * limitNews
+    });
+  };
 
   render() {
     const { Content } = Layout;
@@ -30,7 +40,7 @@ class NewsPage extends React.Component {
             className="site-layout-background"
             style={{ padding: 24, minHeight: 380 }}
           >
-            <NewsCard news={newsList} />
+            <NewsCard news={newsList.slice(this.state.minValue, this.state.maxValue)} />
 
             <Row justify="center">
               <Col>

@@ -12,7 +12,7 @@ class NewsCard extends React.Component {
       <Row gutter="16">
         {this.props.news.map((item, key) => (
           <Col span={6} key={key} style={{ marginBottom: 30 }}>
-            <Link to={item.url}>
+            <Link to={{ pathname: "/news/" + item.id }}>
               <Card hoverable cover={<img src={item.imgCover} />}>
                 <Meta title={item.title} description={item.description} />
               </Card>
