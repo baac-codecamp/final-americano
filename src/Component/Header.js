@@ -9,18 +9,32 @@ class Header extends React.Component {
     super(props);
     this.state = {
       isTop: true,
+      key: "0",
     };
   }
 
+  componentWillMount() {
+    this.checkMenubar();
+  }
+
   componentDidMount() {
+    this.checkScoll();
+  }
+
+  checkScoll = () => {
     document.addEventListener("scroll", () => {
       let scroll = this.props.isHomePage ? 100 : 20;
       const isTop = window.scrollY < scroll;
-      if (isTop !== this.state.isTop) {
-        this.setState({ isTop });
-      }
+      isTop !== this.state.isTop && this.setState({ isTop });
     });
-  }
+  };
+
+  checkMenubar = () => {
+    menuList.map((item, k) => {
+      item.url === window.location.pathname &&
+        this.setState({ key: k.toString() });
+    });
+  };
 
   render() {
     const { Header } = Layout;
@@ -33,7 +47,11 @@ class Header extends React.Component {
         <Link to={menuList[0].url}>
           <img src={logo} className="logo" />
         </Link>
-        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["0"]}>
+        <Menu
+          theme="dark"
+          mode="horizontal"
+          defaultSelectedKeys={[this.state.key]}
+        >
           {menuList.map((item, key) => (
             <Menu.Item key={key}>
               <Link to={item.url}>{item.name}</Link>
