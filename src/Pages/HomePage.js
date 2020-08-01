@@ -19,7 +19,7 @@ class HomePage extends React.Component {
         <div className="header-image-cover">
           <div className="header-image">
             <div className="header-content">
-              <Button className="btn-header-section mr-40" size="large">
+              <Button className="btn-header-section" size="large">
                 <Link to={menuList[1].url}>{menuList[1].name}</Link>
               </Button>
               <Button className="btn-header-section" size="large">

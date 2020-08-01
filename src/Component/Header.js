@@ -1,8 +1,10 @@
 import React from "react";
-import { Layout, Menu } from "antd";
+import { Layout, Menu, Dropdown } from "antd";
 import { Link } from "react-router-dom";
 import logo from "../Asset/Image/logo salak 2.png";
+import logoSmall from "../Asset/Image/baaclogo.png";
 import { menuList } from "../Asset/Data";
+import { MenuOutlined } from "@ant-design/icons";
 
 class Header extends React.Component {
   constructor(props) {
@@ -39,6 +41,12 @@ class Header extends React.Component {
   render() {
     const { Header } = Layout;
     let classNav = this.state.isTop ? "" : "ant-layout-header-nav";
+    const menuItem = menuList.map((item, key) => (
+      <Menu.Item key={key}>
+        <Link to={item.url}>{item.name}</Link>
+      </Menu.Item>
+    ));
+    const menu = <Menu>{menuItem}</Menu>;
     return (
       <Header
         style={{ position: "fixed", zIndex: 1, width: "100%" }}
@@ -46,18 +54,26 @@ class Header extends React.Component {
       >
         <Link to={menuList[0].url}>
           <img src={logo} className="logo" />
+          <img src={logoSmall} className="logo-small" />
         </Link>
         <Menu
+          className="menubar"
           theme="dark"
           mode="horizontal"
           defaultSelectedKeys={[this.state.key]}
         >
-          {menuList.map((item, key) => (
-            <Menu.Item key={key}>
-              <Link to={item.url}>{item.name}</Link>
-            </Menu.Item>
-          ))}
+          {menuItem}
         </Menu>
+        <div className="menubar-small">
+          <Dropdown overlay={menu} trigger={["click"]}>
+            <a
+              className="ant-dropdown-link dropdown"
+              onClick={(e) => e.preventDefault()}
+            >
+              <MenuOutlined />
+            </a>
+          </Dropdown>
+        </div>
       </Header>
     );
   }
