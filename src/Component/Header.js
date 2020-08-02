@@ -21,14 +21,17 @@ class Header extends React.Component {
 
   componentDidMount() {
     this.checkScoll();
+    this.setMenubarBackground();
   }
 
   checkScoll = () => {
-    document.addEventListener("scroll", () => {
-      let scroll = this.props.isHomePage ? 100 : 20;
-      const isTop = window.scrollY < scroll;
-      isTop !== this.state.isTop && this.setState({ isTop });
-    });
+    document.addEventListener("scroll", this.setMenubarBackground);
+  };
+
+  setMenubarBackground = () => {
+    let scroll = this.props.isHomePage ? 100 : 20;
+    const isTop = window.scrollY < scroll;
+    isTop !== this.state.isTop && this.setState({ isTop });
   };
 
   checkMenubar = () => {
