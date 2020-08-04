@@ -2,31 +2,43 @@ import React from "react";
 import { Layout } from "antd";
 import Footer from "../Component/Footer";
 import Header from "../Component/Header";
-import { checkSalakBySelf } from "../Asset/Wording";
+import InputFormSelf from "../Component/InputFormSelf";
+import ResultFormSelf from "../Component/ResultFormSelf";
+import { menuList } from "../Asset/Data";
 
-class CheckSalakBySelfPage extends React.Component {
-  constructor() {
-    super();
+class CheckSalakByCIDPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isSubmit: false,
+    };
   }
+
+  onSubmitForm = (dateOfRound) => {
+    console.log("main page: ", dateOfRound);
+    this.setState({ isSubmit: true });
+  };
+
   render() {
     const { Content } = Layout;
     return (
       <Layout>
         <Header isHomePage={false} />
         <div className="header-image-cover nav">
-          <div className="header-image">
-          </div>
+          <div className="header-image"></div>
         </div>
         <Content
           className="site-layout"
           style={{ padding: "0 50px", marginTop: 24 }}
         >
-              <div className="title-page">{checkSalakBySelf}</div>
+          <div className="title-page">{menuList[2].name}</div>
           <div
             className="site-layout-background"
             style={{ padding: 24, minHeight: 380 }}
           >
-            {checkSalakBySelf}
+            <InputFormSelf onSubmitForm={this.onSubmitForm} />
+            {/* {this.state.isSubmit && <ResultFormSelf />} */}
+            <ResultFormSelf />
           </div>
         </Content>
         <Footer />
@@ -34,4 +46,4 @@ class CheckSalakBySelfPage extends React.Component {
     );
   }
 }
-export default CheckSalakBySelfPage;
+export default CheckSalakByCIDPage;
