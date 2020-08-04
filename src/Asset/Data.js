@@ -5,6 +5,7 @@ export const menuList = [
   { name: "ตรวจรางวัลด้วยตนเอง", url: "/self" },
   { name: "ข่าวสาร", url: "/news" },
 ];
+export const dateFormat = "DD/MM/YYYY";
 export const limitNews = 12;
 export const newsList = [
   {

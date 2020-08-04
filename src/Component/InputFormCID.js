@@ -1,6 +1,7 @@
 import React from "react";
 import moment from "moment";
 import { Form, InputNumber, Button, DatePicker, Row, Col } from "antd";
+import { dateFormat } from "../Asset/Data";
 
 class InputFormCID extends React.Component {
   constructor(props) {
@@ -8,7 +9,7 @@ class InputFormCID extends React.Component {
   }
 
   onFinish = (values) => {
-    console.log("Success:", values);
+    console.log("onFinish:", values);
     this.props.onSubmitForm(values.cid, values.dateofbirth);
   };
 
@@ -20,7 +21,7 @@ class InputFormCID extends React.Component {
     const tailLayout = {
       wrapperCol: { offset: 8, span: 16 },
     };
-    const dateFormat = "DD/MM/YYYY";
+    const today = new Date();
 
     return (
       <Row justify="center" style={{ marginTop: 30 }}>
@@ -38,7 +39,7 @@ class InputFormCID extends React.Component {
                 { required: true, message: "กรุณากรอกหมายเลขบัตรประชาชน" },
               ]}
             >
-              <InputNumber style={{ width: "100%" }} />
+              <InputNumber maxLength="13" style={{ width: "100%" }} />
             </Form.Item>
             <Form.Item
               label="วัน/เดือน/ปีเกิด"
@@ -48,7 +49,7 @@ class InputFormCID extends React.Component {
               ]}
             >
               <DatePicker
-                defaultValue={moment("2015/01/01", dateFormat)}
+                defaultValue={moment(today, dateFormat)}
                 format={dateFormat}
                 style={{ width: "100%" }}
               />
