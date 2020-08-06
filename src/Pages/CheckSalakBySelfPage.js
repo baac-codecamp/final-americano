@@ -37,8 +37,7 @@ class CheckSalakByCIDPage extends React.Component {
             style={{ padding: 24, minHeight: 380 }}
           >
             <InputFormSelf onSubmitForm={this.onSubmitForm} />
-            {/* {this.state.isSubmit && <ResultFormSelf />} */}
-            <ResultFormSelf />
+            {this.state.isSubmit && <ResultFormSelf />}
           </div>
         </Content>
         <Footer />

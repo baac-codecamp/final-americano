@@ -21,7 +21,17 @@ export const labelMsg = {
   cid: "หมายเลขบัตรประชาชน",
   name: "ชื่อ-นามสกุล",
   bod: "วัน/เดือน/ปีเกิด",
+  roundDate: "เลือกงวด",
 };
+
+export const errorMsg = {
+  notConnectServer: "ไม่สามารถเชื่อมต่อ Server ได้",
+};
+
+export const listRewardAtDate = [
+  "2020-06-16T00:00:00.000Z",
+  "2020-07-16T00:00:00.000Z",
+];
 
 export const resultData = {
   _id: "5f2ac61462e0850a0269d0fc",
