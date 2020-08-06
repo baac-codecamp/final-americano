@@ -1,20 +1,57 @@
 import React from "react";
 import moment from "moment";
-import { Form, Dropdown, Button, Row, Col, Menu } from "antd";
+import axios from "axios";
+import { Form, Dropdown, Button, Row, Col, Menu, Alert } from "antd";
 import { DownOutlined } from "@ant-design/icons";
+import { urlListRewardAtDate } from "../Asset/URL";
+import {
+  errorMsg,
+  labelMsg,
+  listRewardAtDate,
+  dateFormatAPI,
+} from "../Asset/Data";
 
 class InputFormSelf extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      roundDateList: [],
+      roundDate: "",
+      message: "",
+      isDisable: true,
+      selectedRound: "ทั้งหมด",
+    };
   }
 
-  onFinish = (values) => {
-    console.log("Success:", values);
-    this.props.onSubmitForm(values.cid, values.dateofbirth);
+  componentDidMount() {
+    this.setState({ roundDateList: listRewardAtDate });
+    // this.getRoundDate();
+  }
+
+  getRoundDate = () => {
+    axios
+      .get(urlListRewardAtDate)
+      .then((res) => {
+        console.log(res);
+        this.setState({ roundDate: listRewardAtDate });
+      })
+      .catch((error) => {
+        console.log(error);
+        this.setState({ message: errorMsg.notConnectServer });
+      });
+  };
+
+  onFinish = () => {
+    this.props.onSubmitForm(this.state.roundDate);
   };
 
   handleMenuClick = (e) => {
-    console.log("click", e);
+    console.log(e);
+    this.setState({
+      roundDate: e.key,
+      isDisable: false,
+      selectedRound: moment(e.key).format("ll"),
+    });
   };
 
   render() {
@@ -25,43 +62,53 @@ class InputFormSelf extends React.Component {
     const tailLayout = {
       wrapperCol: { span: 24 },
     };
-    const dateFormat = "DD/MM/YYYY";
     const dropdownList = (
       <Menu onClick={this.handleMenuClick}>
-        <Menu.Item key="1">16 ก.ค. 63</Menu.Item>
-        <Menu.Item key="2">16 มิ.ย. 63</Menu.Item>
-        <Menu.Item key="3">16 พ.ค. 63</Menu.Item>
+        {this.state.roundDateList.map((item, key) => {
+          const shortDate = moment(item).format("ll");
+          const datekey = moment(item).format(dateFormatAPI);
+          return <Menu.Item key={datekey}>{shortDate}</Menu.Item>;
+        })}
       </Menu>
     );
 
     return (
-      <Row justify="center" style={{ marginTop: 30 }}>
-        <Col span={10}>
-          <Form
-            {...layout}
-            name="cidform"
-            initialValues={{ remember: true }}
-            onFinish={this.onFinish}
-          >
-            <Form.Item label="เลือกงวด" name="dateOfRound">
-              <Dropdown overlay={dropdownList}>
-                <Button style={{ width: "200px" }}>
-                  ทั้งหมด{" "}
-                  <DownOutlined
-                    style={{ float: "right", lineHeight: "27px" }}
-                  />
-                </Button>
-              </Dropdown>
-            </Form.Item>
+      <div>
+        {this.state.message !== "" && (
+          <Alert message={this.state.message} type="error" banner />
+        )}
+        <Row justify="center" style={{ marginTop: 30 }}>
+          <Col span={10}>
+            <Form
+              {...layout}
+              name="cidform"
+              initialValues={{ remember: true }}
+              onFinish={this.onFinish}
+            >
+              <Form.Item label={labelMsg.roundDate} name="dateOfRound">
+                <Dropdown overlay={dropdownList}>
+                  <Button style={{ width: "200px" }}>
+                    {this.state.selectedRound}
+                    <DownOutlined
+                      style={{ float: "right", lineHeight: "27px" }}
+                    />
+                  </Button>
+                </Dropdown>
+              </Form.Item>
 
-            <Form.Item {...tailLayout} style={{ textAlign: "center" }}>
-              <Button type="primary" htmlType="submit">
-                ตรวจ
-              </Button>
-            </Form.Item>
-          </Form>
-        </Col>
-      </Row>
+              <Form.Item {...tailLayout} style={{ textAlign: "center" }}>
+                <Button
+                  type="primary"
+                  htmlType="submit"
+                  disabled={this.state.isDisable}
+                >
+                  ตรวจ
+                </Button>
+              </Form.Item>
+            </Form>
+          </Col>
+        </Row>
+      </div>
     );
   }
 }

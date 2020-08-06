@@ -11,12 +11,12 @@ class CheckSalakByCIDPage extends React.Component {
     super(props);
     this.state = {
       isSubmit: false,
+      roundDate: "",
     };
   }
 
-  onSubmitForm = (dateOfRound) => {
-    console.log("main page: ", dateOfRound);
-    this.setState({ isSubmit: true });
+  onSubmitForm = (date) => {
+    this.setState({ isSubmit: true, roundDate: date });
   };
 
   render() {
@@ -37,8 +37,9 @@ class CheckSalakByCIDPage extends React.Component {
             style={{ padding: 24, minHeight: 380 }}
           >
             <InputFormSelf onSubmitForm={this.onSubmitForm} />
-            {/* {this.state.isSubmit && <ResultFormSelf />} */}
-            <ResultFormSelf />
+            {this.state.isSubmit && (
+              <ResultFormSelf roundDate={this.state.roundDate} />
+            )}
           </div>
         </Content>
         <Footer />

@@ -19,7 +19,10 @@ class Footer extends React.Component {
           เลขที่ 2346 ถนนพหลโยธิน แขวงเสนานิคม เขตจตุจักร กรุงเทพฯ 10900
         </div>
         <div style={{ fontSize: "16px" }}>
-          Call-center: <a href="tel:02-555-0555">02-555-0555</a>
+          call-center:{" "}
+          <a href="tel:02-555-0555" style={{ color: "rgba(0, 0, 0, 0.65)" }}>
+            02-555-0555
+          </a>
         </div>
       </Footer>
     );
