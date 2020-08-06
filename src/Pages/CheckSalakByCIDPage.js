@@ -1,22 +1,41 @@
 import React from "react";
+import axios from "axios";
 import { Layout } from "antd";
 import Footer from "../Component/Footer";
 import Header from "../Component/Header";
 import InputFormCID from "../Component/InputFormCID";
 import ResultFormCID from "../Component/ResultFormCID";
 import { menuList } from "../Asset/Data";
+import { urlCheckSalakByCID } from "../Asset/URL";
 
 class CheckSalakByCIDPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       isSubmit: false,
+      resultData: {},
     };
   }
 
-  onSubmitForm = (cid, dateOfBirth) => {
-    console.log("main page: ", cid, dateOfBirth);
+  onSubmitForm = async (cid, bod) => {
+    const user = {
+      cid: cid,
+      bod: bod,
+    };
+
+    console.log(user);
     this.setState({ isSubmit: true });
+
+
+    // let data = await axios
+    //   .post(urlCheckSalakByCID, user)
+    //   .then((res) => {
+    //     console.log(res);
+    //     this.setState({ isSubmit: true });
+    //   })
+    //   .catch((error) => {
+    //     console.log(error.response);
+    //   });
   };
 
   render() {
@@ -37,7 +56,7 @@ class CheckSalakByCIDPage extends React.Component {
             style={{ padding: 24, minHeight: 380 }}
           >
             {this.state.isSubmit ? (
-              <ResultFormCID />
+              <ResultFormCID result={this.state.resultData} />
             ) : (
               <InputFormCID onSubmitForm={this.onSubmitForm} />
             )}
