@@ -9,7 +9,6 @@ import {
   labelMsg,
   listRewardAtDate,
   dateFormatAPI,
-  dateFormat,
 } from "../Asset/Data";
 
 class InputFormSelf extends React.Component {
@@ -20,6 +19,7 @@ class InputFormSelf extends React.Component {
       roundDate: "",
       message: "",
       isDisable: true,
+      selectedRound: "ทั้งหมด",
     };
   }
 
@@ -46,7 +46,12 @@ class InputFormSelf extends React.Component {
   };
 
   handleMenuClick = (e) => {
-    this.setState({ roundDate: e.key, isDisable: false });
+    console.log(e);
+    this.setState({
+      roundDate: e.key,
+      isDisable: false,
+      selectedRound: moment(e.key).format("ll"),
+    });
   };
 
   render() {
@@ -60,9 +65,9 @@ class InputFormSelf extends React.Component {
     const dropdownList = (
       <Menu onClick={this.handleMenuClick}>
         {this.state.roundDateList.map((item, key) => {
-          const dateshow = moment(item).format(dateFormat);
+          const shortDate = moment(item).format("ll");
           const datekey = moment(item).format(dateFormatAPI);
-          return <Menu.Item key={datekey}>{dateshow}</Menu.Item>;
+          return <Menu.Item key={datekey}>{shortDate}</Menu.Item>;
         })}
       </Menu>
     );
@@ -83,7 +88,7 @@ class InputFormSelf extends React.Component {
               <Form.Item label={labelMsg.roundDate} name="dateOfRound">
                 <Dropdown overlay={dropdownList}>
                   <Button style={{ width: "200px" }}>
-                    ทั้งหมด{" "}
+                    {this.state.selectedRound}
                     <DownOutlined
                       style={{ float: "right", lineHeight: "27px" }}
                     />
