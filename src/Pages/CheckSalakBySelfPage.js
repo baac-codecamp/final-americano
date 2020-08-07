@@ -1,6 +1,6 @@
 import React from "react";
 import { Layout } from "antd";
-import Footer from "../Component/Footer";
+import FooterSection from "../Component/FooterSection";
 import Header from "../Component/Header";
 import InputFormSelf from "../Component/InputFormSelf";
 import ResultFormSelf from "../Component/ResultFormSelf";
@@ -42,7 +42,7 @@ class CheckSalakByCIDPage extends React.Component {
             )}
           </div>
         </Content>
-        <Footer />
+        <FooterSection />
       </Layout>
     );
   }

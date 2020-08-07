@@ -1,6 +1,6 @@
 import React from "react";
 import { Layout, Row, Col } from "antd";
-import Footer from "../Component/Footer";
+import FooterSection from "../Component/FooterSection";
 import Header from "../Component/Header";
 import { menuList, newsList } from "../Asset/Data";
 
@@ -39,7 +39,7 @@ class NewsDetailPage extends React.Component {
             </div>
           </div>
         </Content>
-        <Footer />
+        <FooterSection />
       </Layout>
     );
   }

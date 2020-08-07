@@ -2,5 +2,5 @@ projectKey=final-americano-gui
 serverUrl=http://localhost:9000
 serverVersion=8.4.1.35646
 dashboardUrl=http://localhost:9000/dashboard?id=final-americano-gui
-ceTaskId=AXPG06LxudrygzVziVOd
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AXPG06LxudrygzVziVOd
+ceTaskId=AXPHiPe0P12TsbpYxZH7
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AXPHiPe0P12TsbpYxZH7

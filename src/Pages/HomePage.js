@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import NewsCard from "../Component/NewsCard";
-import Footer from "../Component/Footer";
+import FooterSection from "../Component/FooterSection";
 import Header from "../Component/Header";
 import { Layout, Button } from "antd";
 import { menuList, newsList } from "../Asset/Data";
@@ -45,7 +45,7 @@ class HomePage extends React.Component {
           </div>
         </Content>
 
-        <Footer />
+        <FooterSection />
       </Layout>
     );
   }

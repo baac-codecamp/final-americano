@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { Layout } from "antd";
-import Footer from "../Component/Footer";
+import FooterSection from "../Component/FooterSection";
 import Header from "../Component/Header";
 import InputFormCID from "../Component/InputFormCID";
 import ResultFormCID from "../Component/ResultFormCID";
@@ -62,7 +62,7 @@ class CheckSalakByCIDPage extends React.Component {
             )}
           </div>
         </Content>
-        <Footer />
+        <FooterSection />
       </Layout>
     );
   }

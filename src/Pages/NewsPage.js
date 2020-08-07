@@ -1,6 +1,6 @@
 import React from "react";
 import { Layout, Pagination, Row, Col } from "antd";
-import Footer from "../Component/Footer";
+import FooterSection from "../Component/FooterSection";
 import Header from "../Component/Header";
 import NewsCard from "../Component/NewsCard";
 import { menuList, newsList, limitNews } from "../Asset/Data";
@@ -54,7 +54,7 @@ class NewsPage extends React.Component {
             </Row>
           </div>
         </Content>
-        <Footer />
+        <FooterSection />
       </Layout>
     );
   }
