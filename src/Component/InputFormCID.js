@@ -36,11 +36,10 @@ class InputFormCID extends React.Component {
     };
     const today = new Date();
     const checkLength = (rule, value) => {
-      if (!value) return Promise.reject(requiredMsg.cid);
-      if (value.toString().length == 13) {
-        return Promise.resolve();
+      if (value && value.toString().length !== 13) {
+        return Promise.reject(validateMsg.cidLength);
       }
-      return Promise.reject(validateMsg.cidLength);
+      return Promise.resolve();
     };
 
     return (
@@ -55,7 +54,10 @@ class InputFormCID extends React.Component {
             <Form.Item
               label={labelMsg.cid}
               name="cid"
-              rules={[{ validator: checkLength }]}
+              rules={[
+                { required: true, message: requiredMsg.cid },
+                { validator: checkLength },
+              ]}
             >
               <InputNumber
                 maxLength={13}
