@@ -36,7 +36,7 @@ class HeaderSection extends React.Component {
 
   checkMenubar = () => {
     menuList.map((item, k) => {
-      item.url === window.location.pathname &&
+      window.location.pathname.indexOf(item.url) >= 0 &&
         this.setState({ key: k.toString() });
     });
   };
