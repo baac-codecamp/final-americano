@@ -6,7 +6,7 @@ import InputFormSelf from "../Component/InputFormSelf";
 import ResultFormSelf from "../Component/ResultFormSelf";
 import { menuList } from "../Asset/Data";
 
-class CheckSalakByCIDPage extends React.Component {
+class CheckSalakBySelfPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -47,4 +47,4 @@ class CheckSalakByCIDPage extends React.Component {
     );
   }
 }
-export default CheckSalakByCIDPage;
+export default CheckSalakBySelfPage;

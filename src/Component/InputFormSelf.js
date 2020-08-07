@@ -7,7 +7,6 @@ import { urlListRewardAtDate } from "../Asset/URL";
 import {
   errorMsg,
   labelMsg,
-  listRewardAtDate,
   dateFormatAPI,
 } from "../Asset/Data";
 
