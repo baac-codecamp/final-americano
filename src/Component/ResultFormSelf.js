@@ -21,7 +21,7 @@ class ResultFormSelf extends React.Component {
     const body = {
       rewardAtDate: this.state.roundDate,
     };
-    let data = await axios
+    await axios
       .post(urlCheckSalakBySelf, body)
       .then((res) => {
         console.log(res);

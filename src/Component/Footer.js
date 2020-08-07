@@ -1,7 +1,7 @@
 import React from "react";
 import { Layout } from "antd";
 
-class Footer extends React.Component {
+class FooterSection extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -29,4 +29,4 @@ class Footer extends React.Component {
   }
 }
 
-export default Footer;
+export default FooterSection;

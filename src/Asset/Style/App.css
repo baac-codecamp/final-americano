@@ -12,13 +12,10 @@
 
 .ant-layout-header {
   height: 94px !important;
-}
-
-.ant-menu.ant-menu-dark {
   background: rgba(0, 0, 0, 0) !important;
 }
 
-.ant-layout-header {
+.ant-menu.ant-menu-dark {
   background: rgba(0, 0, 0, 0) !important;
 }
 

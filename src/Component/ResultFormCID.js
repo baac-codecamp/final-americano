@@ -19,11 +19,11 @@ class ResultFormCID extends React.Component {
       wrapperCol: { span: 14 },
     };
 
-    const { cid, cif, cusName, bod, arrReward } = resultData;
+    const { cid, cusName, bod, arrReward } = resultData;
     const date = moment(bod).format(dateFormat);
     const data = [];
 
-    const dataReward = arrReward.map((item, key) => {
+    arrReward.map((item, key) => {
       data.push({
         key: item.accNo,
         no: key + 1,

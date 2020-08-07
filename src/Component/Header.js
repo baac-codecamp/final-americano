@@ -6,7 +6,7 @@ import logoSmall from "../Asset/Image/baaclogo.png";
 import { menuList } from "../Asset/Data";
 import { MenuOutlined } from "@ant-design/icons";
 
-class Header extends React.Component {
+class HeaderSection extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -81,4 +81,4 @@ class Header extends React.Component {
     );
   }
 }
-export default Header;
+export default HeaderSection;
