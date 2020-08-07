@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import NewsCard from "../Component/NewsCard";
 import FooterSection from "../Component/FooterSection";
-import Header from "../Component/Header";
+import HeaderSection from "../Component/HeaderSection";
 import { Layout, Button } from "antd";
 import { menuList, newsList } from "../Asset/Data";
 
@@ -15,7 +15,7 @@ class HomePage extends React.Component {
     const { Content } = Layout;
     return (
       <Layout>
-        <Header isHomePage={true} />
+        <HeaderSection isHomePage={true} />
         <div className="header-image-cover">
           <div className="header-image">
             <div className="header-content">

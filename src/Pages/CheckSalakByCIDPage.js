@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import { Layout } from "antd";
 import FooterSection from "../Component/FooterSection";
-import Header from "../Component/Header";
+import HeaderSection from "../Component/HeaderSection";
 import InputFormCID from "../Component/InputFormCID";
 import ResultFormCID from "../Component/ResultFormCID";
 import { menuList } from "../Asset/Data";
@@ -42,7 +42,7 @@ class CheckSalakByCIDPage extends React.Component {
     const { Content } = Layout;
     return (
       <Layout>
-        <Header isHomePage={false} />
+        <HeaderSection isHomePage={false} />
         <div className="header-image-cover nav">
           <div className="header-image"></div>
         </div>

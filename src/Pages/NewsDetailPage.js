@@ -1,7 +1,7 @@
 import React from "react";
 import { Layout, Row, Col } from "antd";
 import FooterSection from "../Component/FooterSection";
-import Header from "../Component/Header";
+import HeaderSection from "../Component/HeaderSection";
 import { menuList, newsList } from "../Asset/Data";
 
 class NewsDetailPage extends React.Component {
@@ -19,7 +19,7 @@ class NewsDetailPage extends React.Component {
     const { title, imgCover, description } = newsList[0];
     return (
       <Layout>
-        <Header isHomePage={false} />
+        <HeaderSection isHomePage={false} />
         <div className="header-image-cover nav">
           <div className="header-image"></div>
         </div>
