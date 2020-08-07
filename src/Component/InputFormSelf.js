@@ -24,8 +24,7 @@ class InputFormSelf extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({ roundDateList: listRewardAtDate });
-    // this.getRoundDate();
+    this.getRoundDate();
   }
 
   getRoundDate = () => {
@@ -33,7 +32,8 @@ class InputFormSelf extends React.Component {
       .get(urlListRewardAtDate)
       .then((res) => {
         console.log(res);
-        this.setState({ roundDate: listRewardAtDate });
+        console.log(res.data.response_data.ListRewardAtDate);
+        this.setState({ roundDateList: res.data.response_data.ListRewardAtDate });
       })
       .catch((error) => {
         console.log(error);
