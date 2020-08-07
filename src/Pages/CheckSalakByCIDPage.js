@@ -1,11 +1,11 @@
 import React from "react";
 import axios from "axios";
-import { Layout } from "antd";
+import { Layout, Alert } from "antd";
 import Footer from "../Component/Footer";
 import Header from "../Component/Header";
 import InputFormCID from "../Component/InputFormCID";
 import ResultFormCID from "../Component/ResultFormCID";
-import { menuList } from "../Asset/Data";
+import { menuList, errorMsg } from "../Asset/Data";
 import { urlCheckSalakByCID } from "../Asset/URL";
 
 class CheckSalakByCIDPage extends React.Component {
@@ -14,6 +14,7 @@ class CheckSalakByCIDPage extends React.Component {
     this.state = {
       isSubmit: false,
       resultData: {},
+      message: "",
     };
   }
 
@@ -23,19 +24,22 @@ class CheckSalakByCIDPage extends React.Component {
       bod: bod,
     };
 
-    console.log(user);
-    this.setState({ isSubmit: true });
-
-
-    // let data = await axios
-    //   .post(urlCheckSalakByCID, user)
-    //   .then((res) => {
-    //     console.log(res);
-    //     this.setState({ isSubmit: true });
-    //   })
-    //   .catch((error) => {
-    //     console.log(error.response);
-    //   });
+    await axios
+      .post(urlCheckSalakByCID, user)
+      .then((res) => {
+        const data = res.data;
+        if (data.response_status == "success") {
+          this.setState({
+            resultData: data.response_data,
+            isSubmit: true,
+            message: "",
+          });
+        }
+      })
+      .catch((error) => {
+        console.log(error.response);
+        this.setState({ message: errorMsg.notFoundData });
+      });
   };
 
   render() {
@@ -55,6 +59,9 @@ class CheckSalakByCIDPage extends React.Component {
             className="site-layout-background"
             style={{ padding: 24, minHeight: 380 }}
           >
+            {this.state.message !== "" && (
+              <Alert message={this.state.message} type="error" banner />
+            )}
             {this.state.isSubmit ? (
               <ResultFormCID result={this.state.resultData} />
             ) : (

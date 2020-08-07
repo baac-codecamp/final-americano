@@ -2,7 +2,7 @@ import React from "react";
 import moment from "moment";
 import { Form, Row, Col, Table, Divider } from "antd";
 import { columns } from "../Asset/ColumnCID";
-import { resultData, dateFormat, labelMsg } from "../Asset/Data";
+import { dateFormat, labelMsg } from "../Asset/Data";
 
 class ResultFormCID extends React.Component {
   constructor(props) {
@@ -19,11 +19,11 @@ class ResultFormCID extends React.Component {
       wrapperCol: { span: 14 },
     };
 
-    const { cid, cif, cusName, bod, arrReward } = resultData;
-    const date = moment(bod).format(dateFormat);
+    const { cid, cusName, bod, arrReward } = this.props.result;
+    const date = moment(bod).format("LL");
     const data = [];
 
-    const dataReward = arrReward.map((item, key) => {
+    arrReward.map((item, key) => {
       data.push({
         key: item.accNo,
         no: key + 1,

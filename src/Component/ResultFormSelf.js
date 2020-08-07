@@ -3,7 +3,7 @@ import moment from "moment";
 import "moment/min/moment-with-locales";
 import "moment/locale/th";
 import axios from "axios";
-import { Divider, Row, Col, message } from "antd";
+import { Divider, Row, Col } from "antd";
 import { urlCheckSalakBySelf } from "../Asset/URL";
 import { errorMsg, dataSalakBySelf } from "../Asset/Data";
 
