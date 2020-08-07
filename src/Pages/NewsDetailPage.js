@@ -1,5 +1,5 @@
 import React from "react";
-import { Layout, Row, Col } from "antd";
+import { Layout } from "antd";
 import FooterSection from "../Component/FooterSection";
 import HeaderSection from "../Component/HeaderSection";
 import { menuList, newsList } from "../Asset/Data";
