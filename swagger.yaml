@@ -1,0 +1,308 @@
+swagger: "2.0"
+info:
+  description: "API สำหรับระบบตรวจสลากออมทรัพย์ ธ.ก.ส."
+  version: "1.0.0"
+  title: "Check Salak"
+tags:
+  - name: "salak"
+    description: "ค้นหาสลากออมทรัพย์ ธ.ก.ส."
+schemes:
+  - "https"
+host: americano-salak-api.topwork.asia
+paths:
+  /front/findSalakByCid:
+    post:
+      tags:
+        - "salak"
+      summary: ""
+      description: "ค้นหาสลากออมทรัพย์ที่ถูกรางวัลจากหมายเลขบัตรประชาชน"
+      operationId: "findByCID"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: ""
+          required: true
+          schema:
+            $ref: "#/definitions/FindByCIDParameter"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/FoundCIDResultSuccess"
+        "400":
+          description: "Invalid Order"
+          schema:
+            $ref: "#/definitions/ResultFail"
+  /front/findSalakBySelf:
+    post:
+      tags:
+        - "salak"
+      summary: ""
+      description: "ค้นหาสลากออมทรัพย์ตามงวดวันที่"
+      operationId: "findBySelf"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: ""
+          required: true
+          schema:
+            $ref: "#/definitions/FindBySelfParameter"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/FoundRewardResultSuccess"
+        "400":
+          description: "Invalid Order"
+          schema:
+            $ref: "#/definitions/ResultFail"
+  /front/getListRewardAtDate:
+    get:
+      tags:
+        - "salak"
+      summary: ""
+      description: "ดึงข้อมูลวันที่ออกรางวัล"
+      operationId: "getRewardDate"
+      produces:
+        - "application/json"
+      parameters: []
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/FoundListRewardDate"
+        "400":
+          description: "Invalid Order"
+          schema:
+            $ref: "#/definitions/ResultFail"
+  /front/getNews:
+    get:
+      tags:
+        - "salak"
+      summary: ""
+      description: "ดึงข้อมูลข่าวทั้งหมด"
+      operationId: "getAllNews"
+      produces:
+        - "application/json"
+      parameters: []
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/FoundListNews"
+        "400":
+          description: "Invalid Order"
+          schema:
+            $ref: "#/definitions/ResultFail"
+  /front/getNewsById/{id}:
+    get:
+      tags:
+        - "salak"
+      summary: ""
+      description: "ดึงข้อมูลข่าว"
+      operationId: "getNewsById"
+      produces:
+        - "application/json"
+      parameters: []
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/FoundNews"
+        "400":
+          description: "Invalid Order"
+          schema:
+            $ref: "#/definitions/ResultFail"
+
+definitions:
+  FindByCIDParameter:
+    type: "object"
+    properties:
+      cid:
+        type: "string"
+      dob:
+        type: "string"
+        format: "date"
+    xml:
+      name: "CID"
+  FindBySelfParameter:
+    type: "object"
+    properties:
+      rewardAtDate:
+        type: "string"
+        format: "date"
+  FoundCIDResultSuccess:
+    type: "object"
+    properties:
+      response_status:
+        type: "string"
+      response_message:
+        type: "string"
+      response_data:
+        type: "object"
+        properties:
+          _id:
+            type: "string"
+          cid:
+            type: "string"
+          cif:
+            type: "string"
+          bod:
+            type: "string"
+          arrReward:
+            type: "array"
+            xml:
+              name: "arrReward"
+              wrapped: true
+            items:
+              $ref: "#/definitions/Reward"
+  FoundRewardResultSuccess:
+    type: "object"
+    properties:
+      response_status:
+        type: "string"
+      response_message:
+        type: "string"
+      response_data:
+        type: "object"
+        properties:
+          rewardAtDate:
+            type: "string"
+            format: "date-time"
+          seq1:
+            type: "object"
+            properties:
+              no:
+                type: "array"
+                items:
+                  $ref: "#/definitions/RewardNunber"
+              price:
+                type: "integer"
+          seq2:
+            type: "object"
+            properties:
+              no:
+                type: "array"
+                items:
+                  $ref: "#/definitions/RewardNunber"
+              price:
+                type: "integer"
+          seq3:
+            type: "object"
+            properties:
+              no:
+                type: "array"
+                items:
+                  $ref: "#/definitions/RewardNunber"
+              price:
+                type: "integer"
+          seq4:
+            type: "object"
+            properties:
+              no:
+                type: "array"
+                items:
+                  $ref: "#/definitions/RewardNunber"
+              price:
+                type: "integer"
+          seq5:
+            type: "object"
+            properties:
+              no:
+                type: "array"
+                items:
+                  $ref: "#/definitions/RewardNunber"
+              price:
+                type: "integer"
+  FoundListRewardDate:
+    type: "object"
+    properties:
+      response_status:
+        type: "string"
+      response_message:
+        type: "string"
+      response_data:
+        type: "object"
+        properties:
+          ListRewardAtDate:
+            type: "array"
+            items:
+              $ref: "#/definitions/RewardDate"
+  FoundListNews:
+    type: "object"
+    properties:
+      response_status:
+        type: "string"
+      response_message:
+        type: "string"
+      response_data:
+        type: "object"
+        properties:
+          ListNews:
+            type: "array"
+            items:
+              $ref: "#/definitions/News"
+  FoundNews:
+    type: "object"
+    properties:
+      response_status:
+        type: "string"
+      response_message:
+        type: "string"
+      response_data:
+        type: "object"
+        properties:
+          currNews:
+            $ref: "#/definitions/News"
+  ResultFail:
+    type: "object"
+    properties:
+      response_status:
+        type: "string"
+      response_message:
+        type: "string"
+      response_data:
+        type: "object"
+  Reward:
+    type: "object"
+    properties:
+      accNo:
+        type: "string"
+      accName:
+        type: "string"
+      accType:
+        type: "string"
+      salakNoStart:
+        type: "string"
+      salakNoEnd:
+        type: "string"
+      rewardAtDate:
+        type: "string"
+        format: "date-time"
+      rewardAtSeq:
+        type: "string"
+      rewardPrice:
+        type: "integer"
+        format: "int64"
+      rewardNo:
+        type: "string"
+    xml:
+      name: "Reward"
+  RewardNunber:
+    type: "string"
+  RewardDate:
+    type: "string"
+    format: "date-time"
+  News:
+    type: "object"
+    properties: 
+      title:
+        type: "string"
+      imgUrl:
+        type: "string"
+      desc: 
+        type: "string"
