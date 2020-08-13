@@ -1,13 +1,29 @@
 import React from "react";
 import moment from "moment";
-import { Form, Row, Col, Table, Divider } from "antd";
+import { Form, Row, Col, Table, Divider, Modal } from "antd";
 import { columns } from "../Asset/ColumnCID";
 import { dateFormat, labelMsg } from "../Asset/Data";
 
 class ResultFormCID extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      visible: false,
+    };
   }
+
+  showModal = () => {
+    this.setState({
+      visible: true,
+    });
+  };
+
+  handleOk = (e) => {
+    console.log(e);
+    this.setState({
+      visible: false,
+    });
+  };
 
   onChange = (pagination, filters, sorter, extra) => {
     console.log("params", pagination, filters, sorter, extra);
@@ -63,6 +79,15 @@ class ResultFormCID extends React.Component {
             />
           </Col>
         </Row>
+        <Modal
+          title="Basic Modal"
+          visible={this.state.visible}
+          onOk={this.handleOk}
+        >
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+        </Modal>
       </div>
     );
   }
