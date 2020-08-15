@@ -1,9 +1,11 @@
 import React from "react";
-import { Layout, Pagination, Row, Col } from "antd";
+import axios from "axios";
+import { Layout, Pagination, Row, Col, Spin, Alert } from "antd";
 import FooterSection from "../Component/FooterSection";
 import HeaderSection from "../Component/HeaderSection";
 import NewsCard from "../Component/NewsCard";
-import { menuList, newsList, limitNews } from "../Asset/Data";
+import { menuList, limitNews, errorMsg } from "../Asset/Data";
+import { urlAllNews } from "../Asset/URL";
 
 class NewsPage extends React.Component {
   constructor() {
@@ -11,20 +13,53 @@ class NewsPage extends React.Component {
     this.state = {
       current: 1,
       minValue: 0,
-      maxValue: limitNews
+      maxValue: limitNews,
+      newList: [],
+      isLoadSuccess: false,
+      message: "",
     };
   }
+
+  componentDidMount() {
+    this.getNews();
+  }
+
+  getNews = () => {
+    axios
+      .get(urlAllNews)
+      .then((res) => {
+        const data = res.data.response_data;
+        console.log(data);
+        if (data) {
+          this.setState({ newList: data, isLoadSuccess: true });
+        } else {
+          this.setState({
+            message: errorMsg.notFoundData,
+            isLoadSuccess: true,
+          });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        this.setState({
+          message: errorMsg.notConnectServer,
+          isLoadSuccess: true,
+        });
+      });
+  };
 
   handleChange = (value) => {
     console.log(value);
     this.setState({
       minValue: (value - 1) * limitNews,
-      maxValue: value * limitNews
+      maxValue: value * limitNews,
     });
   };
 
   render() {
     const { Content } = Layout;
+    const { newList } = this.state;
+
     return (
       <Layout>
         <HeaderSection isHomePage={false} />
@@ -40,18 +75,33 @@ class NewsPage extends React.Component {
             className="site-layout-background"
             style={{ padding: 24, minHeight: 380 }}
           >
-            <NewsCard news={newsList.slice(this.state.minValue, this.state.maxValue)} />
-
-            <Row justify="center">
-              <Col>
-                <Pagination
-                  defaultCurrent={this.state.current}
-                  defaultPageSize={limitNews}
-                  onChange={this.handleChange}
-                  total={newsList.length}
+            {this.state.message !== "" && (
+              <Alert message={this.state.message} type="error" banner />
+            )}
+            {this.state.isLoadSuccess ? (
+              <div>
+                <NewsCard
+                  news={newList.slice(this.state.minValue, this.state.maxValue)}
                 />
-              </Col>
-            </Row>
+
+                {newList.length > 0 && (
+                  <Row justify="center">
+                    <Col>
+                      <Pagination
+                        defaultCurrent={this.state.current}
+                        defaultPageSize={limitNews}
+                        onChange={this.handleChange}
+                        total={newList.length}
+                      />
+                    </Col>
+                  </Row>
+                )}
+              </div>
+            ) : (
+              <div style={{ textAlign: "center", marginTop: "30px" }}>
+                <Spin size="large" />
+              </div>
+            )}
           </div>
         </Content>
         <FooterSection />
