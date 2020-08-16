@@ -63,7 +63,7 @@ class HomePage extends React.Component {
         >
           <div
             className="site-layout-background"
-            style={{ padding: 24, minHeight: 180 }}
+            style={{ padding: 24, minHeight: 380 }}
           >
             <div className="home-title">
               <div className="title-text">{menuList[3].name}</div>

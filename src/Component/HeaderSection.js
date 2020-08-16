@@ -15,8 +15,13 @@ class HeaderSection extends React.Component {
     };
   }
 
-  componentWillMount() {
+  // componentWillMount() {
+  //   this.checkMenubar();
+  // }
+
+  UNSAFE_componentWillMount(){
     this.checkMenubar();
+
   }
 
   componentDidMount() {

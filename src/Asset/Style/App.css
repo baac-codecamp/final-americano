@@ -44,6 +44,10 @@
   overflow: hidden;
 }
 
+.ant-menu-item-active:hover  {
+  background-color: rgba(0, 0, 0, 0) !important;
+}
+
 /* ------------------------------------------------------------- */
 .mt-10 {
   margin-top: 10px;
