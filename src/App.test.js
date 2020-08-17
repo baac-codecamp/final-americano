@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import App from "./App";
 
 test("renders Home Page link", () => {
@@ -19,6 +19,12 @@ test("renders BAAC name (en) in Footer", () => {
   const linkElement = getByText(
     /Bank for Agriculture and Agricultural Cooperatives/i
   );
+  expect(linkElement).toBeInTheDocument();
+});
+
+test("renders BAAC address in Footer", () => {
+  const { getByText } = render(<App />);
+  const linkElement = getByText(/เลขที่ 2346 ถนนพหลโยธิน แขวงเสนานิคม เขตจตุจักร กรุงเทพฯ 10900/i);
   expect(linkElement).toBeInTheDocument();
 });
 
