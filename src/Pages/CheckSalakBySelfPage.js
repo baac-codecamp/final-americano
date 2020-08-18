@@ -19,6 +19,10 @@ class CheckSalakBySelfPage extends React.Component {
     this.setState({ isSubmit: true, roundDate: date });
   };
 
+  resetIsSubmit = () => {
+    this.setState({ isSubmit: false });
+  };
+
   render() {
     const { Content } = Layout;
     return (
@@ -36,7 +40,7 @@ class CheckSalakBySelfPage extends React.Component {
             className="site-layout-background"
             style={{ padding: 24, minHeight: 380 }}
           >
-            <InputFormSelf onSubmitForm={this.onSubmitForm} />
+            <InputFormSelf onSubmitForm={this.onSubmitForm} resetFlag={this.resetIsSubmit} />
             {this.state.isSubmit && (
               <ResultFormSelf roundDate={this.state.roundDate} />
             )}

@@ -28,7 +28,10 @@ class ResultFormSelf extends React.Component {
     await axios
       .post(urlCheckSalakBySelf, body)
       .then((res) => {
-        this.setState({ rewardList: res.data.response_data });
+        const data = res.data;
+        if (data.response_status === "success") {
+          this.setState({ rewardList: data.response_data });
+        }
       })
       .catch((error) => {
         console.log(error.response);
@@ -68,103 +71,151 @@ class ResultFormSelf extends React.Component {
                 {moment(this.state.roundDate).format("LL")}
               </h1>
               <table>
-                <tr>
-                  <th>รางวัลที่ 1</th>
-                  <th colSpan="3">รางวัลที่ 2</th>
-                </tr>
-                <tr>
-                  {rewardList.seq1.no.map((item, key) => (
-                    <td className="award1">{item}</td>
-                  ))}
-                  {rewardList.seq2.no.map((item, key) => (
-                    <td className="award2">{item}</td>
-                  ))}
-                </tr>
+                <thead>
+                  <tr>
+                    <th>รางวัลที่ 1</th>
+                    <th colSpan="3">รางวัลที่ 2</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    {rewardList.seq1.no.map((item, key) => (
+                      <td className="award1" key={item}>
+                        {item}
+                      </td>
+                    ))}
+                    {rewardList.seq2.no.map((item, key) => (
+                      <td className="award2" key={item}>
+                        {item}
+                      </td>
+                    ))}
+                  </tr>
+                </tbody>
               </table>
               <table style={{ marginTop: 10 }}>
-                <tr>
-                  <th colSpan="5">รางวัลที่ 3</th>
-                </tr>
-                <tr>
-                  {reward3_1.map((item, key) => (
-                    <td className="award">{item}</td>
-                  ))}
-                </tr>
-                <tr>
-                  {reward3_2.map((item, key) => (
-                    <td className="award">{item}</td>
-                  ))}
-                </tr>
+                <thead>
+                  <tr>
+                    <th colSpan="5">รางวัลที่ 3</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    {reward3_1.map((item, key) => (
+                      <td className="award" key={item}>
+                        {item}
+                      </td>
+                    ))}
+                  </tr>
+                  <tr>
+                    {reward3_2.map((item, key) => (
+                      <td className="award" key={item}>
+                        {item}
+                      </td>
+                    ))}
+                  </tr>
+                </tbody>
               </table>
               <table style={{ marginTop: 10 }}>
-                <tr>
-                  <th colSpan="5">รางวัลที่ 4</th>
-                </tr>
-                <tr>
-                  {reward4_1.map((item, key) => (
-                    <td className="award">{item}</td>
-                  ))}
-                </tr>
-                <tr>
-                  {reward4_2.map((item, key) => (
-                    <td className="award">{item}</td>
-                  ))}
-                </tr>
-                <tr>
-                  {reward4_3.map((item, key) => (
-                    <td className="award">{item}</td>
-                  ))}
-                </tr>
-                <tr>
-                  {reward4_4.map((item, key) => (
-                    <td className="award">{item}</td>
-                  ))}
-                </tr>
+                <thead>
+                  <tr>
+                    <th colSpan="5">รางวัลที่ 4</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    {reward4_1.map((item, key) => (
+                      <td className="award" key={item}>
+                        {item}
+                      </td>
+                    ))}
+                  </tr>
+                  <tr>
+                    {reward4_2.map((item, key) => (
+                      <td className="award" key={item}>
+                        {item}
+                      </td>
+                    ))}
+                  </tr>
+                  <tr>
+                    {reward4_3.map((item, key) => (
+                      <td className="award" key={item}>
+                        {item}
+                      </td>
+                    ))}
+                  </tr>
+                  <tr>
+                    {reward4_4.map((item, key) => (
+                      <td className="award" key={item}>
+                        {item}
+                      </td>
+                    ))}
+                  </tr>
+                </tbody>
               </table>
               <table style={{ marginTop: 10 }}>
-                <tr>
-                  <th colSpan="5">รางวัลที่ 5</th>
-                </tr>
-                <tr>
-                  {reward5_1.map((item, key) => (
-                    <td className="award">{item}</td>
-                  ))}
-                </tr>
-                <tr>
-                  {reward5_2.map((item, key) => (
-                    <td className="award">{item}</td>
-                  ))}
-                </tr>
-                <tr>
-                  {reward5_3.map((item, key) => (
-                    <td className="award">{item}</td>
-                  ))}
-                </tr>
-                <tr>
-                  {reward5_4.map((item, key) => (
-                    <td className="award">{item}</td>
-                  ))}
-                </tr>
-                <tr>
-                  {reward5_5.map((item, key) => (
-                    <td className="award">{item}</td>
-                  ))}
-                </tr>
-                <tr>
-                  {reward5_6.map((item, key) => (
-                    <td className="award">{item}</td>
-                  ))}
-                </tr>
-                <tr>
-                  {reward5_7.map((item, key) => (
-                    <td className="award">{item}</td>
-                  ))}
-                </tr>
-                <tr>
-                  {reward5_8.map((item, key) => (
-                    <td className="award">{item}</td>
-                  ))}
-                </tr>
+                <thead>
+                  <tr>
+                    <th colSpan="5">รางวัลที่ 5</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    {reward5_1.map((item, key) => (
+                      <td className="award" key={item}>
+                        {item}
+                      </td>
+                    ))}
+                  </tr>
+                  <tr>
+                    {reward5_2.map((item, key) => (
+                      <td className="award" key={item}>
+                        {item}
+                      </td>
+                    ))}
+                  </tr>
+                  <tr>
+                    {reward5_3.map((item, key) => (
+                      <td className="award" key={item}>
+                        {item}
+                      </td>
+                    ))}
+                  </tr>
+                  <tr>
+                    {reward5_4.map((item, key) => (
+                      <td className="award" key={item}>
+                        {item}
+                      </td>
+                    ))}
+                  </tr>
+                  <tr>
+                    {reward5_5.map((item, key) => (
+                      <td className="award" key={item}>
+                        {item}
+                      </td>
+                    ))}
+                  </tr>
+                  <tr>
+                    {reward5_6.map((item, key) => (
+                      <td className="award" key={item}>
+                        {item}
+                      </td>
+                    ))}
+                  </tr>
+                  <tr>
+                    {reward5_7.map((item, key) => (
+                      <td className="award" key={item}>
+                        {item}
+                      </td>
+                    ))}
+                  </tr>
+                  <tr>
+                    {reward5_8.map((item, key) => (
+                      <td className="award" key={item}>
+                        {item}
+                      </td>
+                    ))}
+                  </tr>
+                </tbody>
               </table>
             </Col>
           </Row>
