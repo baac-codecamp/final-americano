@@ -1,6 +1,6 @@
 import React from "react";
 import moment from "moment";
-import { Form, Row, Col, Table, Divider, Modal } from "antd";
+import { Form, Row, Col, Table, Divider, Modal, Button } from "antd";
 import { columns } from "../Asset/ColumnCID";
 import { dateFormat, labelMsg } from "../Asset/Data";
 
@@ -34,21 +34,26 @@ class ResultFormCID extends React.Component {
       labelCol: { span: 10 },
       wrapperCol: { span: 14 },
     };
+    const tailLayout = {
+      wrapperCol: { offset: 10, span: 14 },
+    };
 
     const { cid, cusName, bod, arrReward } = this.props.result;
     const date = moment(bod).format("LL");
-    const data = [];
+    let data = [];
 
     arrReward.map((item, key) => {
       data.push({
-        key: item.accNo,
+        key: key,
         no: key + 1,
         rewardAtDate: moment(item.rewardAtDate).format(dateFormat),
         accType: item.accType,
         salakNo: `${item.salakNoStart} - ${item.salakNoEnd}`,
         rewardNo: item.rewardNo,
         rewardAtSeq: item.rewardAtSeq,
-        rewardPrice: item.rewardPrice,
+        rewardPrice: item.rewardPrice
+          .toString()
+          .replace(/\B(?=(\d{3})+(?!\d))/g, ","),
       });
     });
 
@@ -65,6 +70,15 @@ class ResultFormCID extends React.Component {
               </Form.Item>
               <Form.Item label={labelMsg.bod} name="bod">
                 <span>{date}</span>
+              </Form.Item>
+
+              <Form.Item {...tailLayout}>
+                <Button
+                  type="primary"
+                  onClick={() => window.location.reload(false)}
+                >
+                  ค้นหาอีกครั้ง
+                </Button>
               </Form.Item>
             </Form>
           </Col>

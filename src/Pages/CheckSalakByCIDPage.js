@@ -49,7 +49,7 @@ class CheckSalakByCIDPage extends React.Component {
       .post(urlCheckSalakByCID, user)
       .then((res) => {
         const data = res.data;
-        if (data.response_status == "success") {
+        if (data.response_status === "success") {
           this.setState({
             resultData: data.response_data,
             isSubmit: true,

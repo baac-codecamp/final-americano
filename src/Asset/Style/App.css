@@ -44,7 +44,19 @@
   overflow: hidden;
 }
 
-.ant-menu-item-active:hover  {
+.ant-card-meta-detail {
+  text-overflow: ellipsis;
+  min-height: 60px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.ant-card-meta-description {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.ant-menu-item-active:hover {
   background-color: rgba(0, 0, 0, 0) !important;
 }
 

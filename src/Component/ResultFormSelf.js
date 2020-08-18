@@ -39,7 +39,7 @@ class ResultFormSelf extends React.Component {
   render() {
     const { rewardList } = this.state;
 
-    if (Object.keys(rewardList).length == 0) {
+    if (Object.keys(rewardList).length === 0) {
       return <div></div>;
     } else {
       let reward3_1 = [...rewardList.seq3.no].splice(0, 5);

@@ -48,7 +48,7 @@ export const columns = [
   {
     title: "จำนวนเงิน",
     dataIndex: "rewardPrice",
-    align: "center",
+    align: "right",
     sorter: {
       compare: (a, b) => a.no - b.no,
       multiple: 1,
