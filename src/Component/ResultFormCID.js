@@ -29,6 +29,12 @@ class ResultFormCID extends React.Component {
     console.log("params", pagination, filters, sorter, extra);
   };
 
+  converMoneyFormat = (price) => {
+    return new Intl.NumberFormat("bt-TH", {
+      maximumSignificantDigits: 3,
+    }).format(price);
+  };
+
   render() {
     const layout = {
       labelCol: { span: 10 },
@@ -43,6 +49,7 @@ class ResultFormCID extends React.Component {
     let data = [];
 
     arrReward.map((item, key) => {
+      console.log(this.converMoneyFormat(item.rewardPrice))
       data.push({
         key: key,
         no: key + 1,
@@ -51,9 +58,7 @@ class ResultFormCID extends React.Component {
         salakNo: `${item.salakNoStart} - ${item.salakNoEnd}`,
         rewardNo: item.rewardNo,
         rewardAtSeq: item.rewardAtSeq,
-        rewardPrice: item.rewardPrice
-          .toString()
-          .replace(/\B(?=(\d{3})+(?!\d))/g, ","),
+        rewardPrice: this.converMoneyFormat(item.rewardPrice),
       });
     });
 
