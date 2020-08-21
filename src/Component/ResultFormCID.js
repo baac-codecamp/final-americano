@@ -30,9 +30,7 @@ class ResultFormCID extends React.Component {
   };
 
   converMoneyFormat = (price) => {
-    return new Intl.NumberFormat("bt-TH", {
-      maximumSignificantDigits: 3,
-    }).format(price);
+    return new Intl.NumberFormat("bt-TH").format(price);
   };
 
   render() {
@@ -49,7 +47,7 @@ class ResultFormCID extends React.Component {
     let data = [];
 
     arrReward.map((item, key) => {
-      console.log(this.converMoneyFormat(item.rewardPrice))
+      console.log(this.converMoneyFormat(item.rewardPrice));
       data.push({
         key: key,
         no: key + 1,
