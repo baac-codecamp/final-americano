@@ -7,6 +7,7 @@ import HeaderSection from "../Component/HeaderSection";
 import { Layout, Button, Spin } from "antd";
 import { menuList } from "../Asset/Data";
 import { urlAllNews } from "../Asset/URL";
+const { Content } = Layout;
 
 class HomePage extends React.Component {
   constructor() {
@@ -41,7 +42,6 @@ class HomePage extends React.Component {
   };
 
   render() {
-    const { Content } = Layout;
     return (
       <Layout>
         <HeaderSection isHomePage={true} />

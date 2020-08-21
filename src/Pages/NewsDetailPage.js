@@ -5,6 +5,7 @@ import FooterSection from "../Component/FooterSection";
 import HeaderSection from "../Component/HeaderSection";
 import { menuList, errorMsg } from "../Asset/Data";
 import { urlAllNewsById } from "../Asset/URL";
+const { Content } = Layout;
 
 class NewsDetailPage extends React.Component {
   constructor(props) {
@@ -49,7 +50,6 @@ class NewsDetailPage extends React.Component {
   };
 
   render() {
-    const { Content } = Layout;
     const { title, imgUrl, desc } = this.state.news;
     return (
       <Layout>

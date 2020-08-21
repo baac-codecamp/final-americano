@@ -6,6 +6,7 @@ import HeaderSection from "../Component/HeaderSection";
 import NewsCard from "../Component/NewsCard";
 import { menuList, limitNews, errorMsg } from "../Asset/Data";
 import { urlAllNews } from "../Asset/URL";
+const { Content } = Layout;
 
 class NewsPage extends React.Component {
   constructor() {
@@ -57,7 +58,6 @@ class NewsPage extends React.Component {
   };
 
   render() {
-    const { Content } = Layout;
     const { newList } = this.state;
 
     return (

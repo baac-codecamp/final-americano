@@ -7,6 +7,7 @@ import InputFormCID from "../Component/InputFormCID";
 import ResultFormCID from "../Component/ResultFormCID";
 import { menuList, errorMsg } from "../Asset/Data";
 import { urlCheckSalakByCID } from "../Asset/URL";
+const { Content } = Layout;
 
 class CheckSalakByCIDPage extends React.Component {
   constructor(props) {
@@ -64,7 +65,6 @@ class CheckSalakByCIDPage extends React.Component {
   };
 
   render() {
-    const { Content } = Layout;
     return (
       <Layout>
         <HeaderSection isHomePage={false} />

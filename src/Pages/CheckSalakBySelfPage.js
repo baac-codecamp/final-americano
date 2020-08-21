@@ -5,6 +5,7 @@ import HeaderSection from "../Component/HeaderSection";
 import InputFormSelf from "../Component/InputFormSelf";
 import ResultFormSelf from "../Component/ResultFormSelf";
 import { menuList } from "../Asset/Data";
+const { Content } = Layout;
 
 class CheckSalakBySelfPage extends React.Component {
   constructor(props) {
@@ -24,7 +25,6 @@ class CheckSalakBySelfPage extends React.Component {
   };
 
   render() {
-    const { Content } = Layout;
     return (
       <Layout>
         <HeaderSection isHomePage={false} />

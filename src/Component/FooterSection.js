@@ -1,12 +1,12 @@
 import React from "react";
 import { Layout } from "antd";
+const { Footer } = Layout;
 
 class FooterSection extends React.Component {
   constructor(props) {
     super(props);
   }
   render() {
-    const { Footer } = Layout;
     return (
       <Footer>
         <div style={{ color: "#49AF49", fontSize: "16px", fontWeight: "600" }}>

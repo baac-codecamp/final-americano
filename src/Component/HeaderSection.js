@@ -5,6 +5,7 @@ import logo from "../Asset/Image/logo salak 2.png";
 import logoSmall from "../Asset/Image/baaclogo.png";
 import { menuList } from "../Asset/Data";
 import { MenuOutlined } from "@ant-design/icons";
+const { Header } = Layout;
 
 class HeaderSection extends React.Component {
   constructor(props) {
@@ -15,13 +16,8 @@ class HeaderSection extends React.Component {
     };
   }
 
-  // componentWillMount() {
-  //   this.checkMenubar();
-  // }
-
   UNSAFE_componentWillMount(){
     this.checkMenubar();
-
   }
 
   componentDidMount() {
@@ -47,7 +43,6 @@ class HeaderSection extends React.Component {
   };
 
   render() {
-    const { Header } = Layout;
     let classNav = this.state.isTop ? "" : "ant-layout-header-nav";
     const menuItem = menuList.map((item, key) => (
       <Menu.Item key={key}>

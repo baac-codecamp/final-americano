@@ -1,13 +1,13 @@
 import React from "react";
 import { Row, Col, Card } from "antd";
 import { Link } from "react-router-dom";
+const { Meta } = Card;
 
 class NewsCard extends React.Component {
   constructor(props) {
     super(props);
   }
   render() {
-    const { Meta } = Card;
     return (
       <Row gutter="16">
         {this.props.news.map((item, key) => (
