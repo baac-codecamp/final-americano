@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { Layout, Alert, Modal } from "antd";
+import { Layout, Alert } from "antd";
 import FooterSection from "../Component/FooterSection";
 import HeaderSection from "../Component/HeaderSection";
 import InputFormCID from "../Component/InputFormCID";
@@ -16,29 +16,8 @@ class CheckSalakByCIDPage extends React.Component {
       isSubmit: false,
       resultData: {},
       message: "",
-      visible: false,
     };
   }
-
-  showModal = () => {
-    this.setState({
-      visible: true,
-    });
-  };
-
-  handleOk = (e) => {
-    console.log(e);
-    this.setState({
-      visible: false,
-    });
-  };
-
-  handleCancel = (e) => {
-    console.log(e);
-    this.setState({
-      visible: false,
-    });
-  };
 
   onSubmitForm = async (cid, bod) => {
     const user = {
@@ -89,20 +68,6 @@ class CheckSalakByCIDPage extends React.Component {
               <InputFormCID onSubmitForm={this.onSubmitForm} />
             )}
           </div>
-
-          <Modal
-            title="ขอแสดงความยินดี"
-            visible={this.state.visible}
-            onOk={this.handleOk}
-            onCancel={this.handleCancel}
-            footer={null}
-          >
-            <div style={{ textAlign: "center" }}>
-              <h1>คุณถูกรางวัลที่ 1</h1>
-              <h1 className="alert-reward1">873286</h1>
-              <p>งวดวันที่ 16 กรกฏาคม 2563</p>
-            </div>
-          </Modal>
         </Content>
         <FooterSection />
       </Layout>

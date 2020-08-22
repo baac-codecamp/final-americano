@@ -1,5 +1,6 @@
 import React from "react";
 import moment from "moment";
+import ConfettiGenerator from "confetti-js";
 import { Form, Row, Col, Table, Divider, Modal, Button } from "antd";
 import { columns } from "../Asset/ColumnCID";
 import { dateFormat, labelMsg } from "../Asset/Data";
@@ -9,6 +10,8 @@ class ResultFormCID extends React.Component {
     super(props);
     this.state = {
       visible: false,
+      rewardNo: "",
+      rewardRoundDate: "",
     };
   }
 
@@ -16,13 +19,14 @@ class ResultFormCID extends React.Component {
     this.checkReward();
   }
 
-  showModal = () => {
+  handleOk = (e) => {
+    console.log(e);
     this.setState({
-      visible: true,
+      visible: false,
     });
   };
 
-  handleOk = (e) => {
+  handleCancel = (e) => {
     console.log(e);
     this.setState({
       visible: false,
@@ -41,11 +45,25 @@ class ResultFormCID extends React.Component {
     const { arrReward } = this.props.result;
     if (arrReward.lenght == 0) return;
 
-    let nowMonth = new Date().getMonth();
+    let nowMonth = new Date().getMonth() ;
 
     arrReward.map((item, key) => {
       let roundMonth = new Date(item.rewardAtDate).getMonth() + 1;
-      if (nowMonth === roundMonth) this.setState({ visible: true });
+
+      if (nowMonth == roundMonth) {
+        this.setState({
+          visible: true,
+          rewardNo: item.rewardNo,
+          rewardRoundDate: moment(item.rewardAtDate).format("LL"),
+        });
+        setTimeout(() => {
+          document.getElementsByClassName("ant-modal-mask")[0].innerHTML =
+            '<canvas id="my-canvas"></canvas>';
+          var confettiSettings = { target: "my-canvas" };
+          var confetti = new ConfettiGenerator(confettiSettings);
+          confetti.render();
+        }, 500);
+      }
     });
   };
 
@@ -112,13 +130,17 @@ class ResultFormCID extends React.Component {
           </Col>
         </Row>
         <Modal
-          title="Basic Modal"
+          title="ขอแสดงความยินดี"
           visible={this.state.visible}
           onOk={this.handleOk}
+          onCancel={this.handleCancel}
+          footer={null}
         >
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-          <p>Some contents...</p>
+          <div style={{ textAlign: "center" }}>
+            <h1>คุณถูกรางวัลที่ 1</h1>
+            <h1 className="alert-reward1">{this.state.rewardNo}</h1>
+            <p>งวดวันที่ {this.state.rewardRoundDate}</p>
+          </div>
         </Modal>
       </div>
     );
