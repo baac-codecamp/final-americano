@@ -45,7 +45,7 @@ class ResultFormCID extends React.Component {
     const { arrReward } = this.props.result;
     if (arrReward.lenght == 0) return;
 
-    let nowMonth = new Date().getMonth() ;
+    let nowMonth = new Date().getMonth() + 1;
 
     arrReward.map((item, key) => {
       let roundMonth = new Date(item.rewardAtDate).getMonth() + 1;

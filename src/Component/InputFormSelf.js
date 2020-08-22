@@ -4,11 +4,7 @@ import axios from "axios";
 import { Form, Dropdown, Button, Row, Col, Menu, Alert } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import { urlListRewardAtDate } from "../Asset/URL";
-import {
-  errorMsg,
-  labelMsg,
-  dateFormatAPI,
-} from "../Asset/Data";
+import { errorMsg, labelMsg, dateFormatAPI } from "../Asset/Data";
 
 class InputFormSelf extends React.Component {
   constructor(props) {
@@ -30,9 +26,9 @@ class InputFormSelf extends React.Component {
     axios
       .get(urlListRewardAtDate)
       .then((res) => {
-        console.log(res);
-        console.log(res.data.response_data.ListRewardAtDate);
-        this.setState({ roundDateList: res.data.response_data.ListRewardAtDate });
+        this.setState({
+          roundDateList: res.data.response_data.ListRewardAtDate,
+        });
       })
       .catch((error) => {
         console.log(error);
@@ -51,6 +47,8 @@ class InputFormSelf extends React.Component {
       isDisable: false,
       selectedRound: moment(e.key).format("ll"),
     });
+
+    this.props.resetFlag();
   };
 
   render() {
