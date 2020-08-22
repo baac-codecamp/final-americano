@@ -27,6 +27,7 @@ export const labelMsg = {
 export const errorMsg = {
   notConnectServer: "ไม่สามารถเชื่อมต่อ Server ได้",
   notFoundData: "ไม่พบข้อมูล",
+  notFoundDataCID: "ไม่พบข้อมูลเลขบัตรประชาชนในระบบ"
 };
 
 export const limitNews = 12;

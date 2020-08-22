@@ -60,7 +60,7 @@ class CheckSalakByCIDPage extends React.Component {
       })
       .catch((error) => {
         console.log(error.response);
-        this.setState({ message: errorMsg.notFoundData });
+        this.setState({ message: errorMsg.notFoundDataCID });
       });
   };
 

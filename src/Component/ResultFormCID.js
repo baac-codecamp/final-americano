@@ -12,6 +12,10 @@ class ResultFormCID extends React.Component {
     };
   }
 
+  componentDidMount() {
+    this.checkReward();
+  }
+
   showModal = () => {
     this.setState({
       visible: true,
@@ -33,6 +37,18 @@ class ResultFormCID extends React.Component {
     return new Intl.NumberFormat("bt-TH").format(price);
   };
 
+  checkReward = () => {
+    const { arrReward } = this.props.result;
+    if (arrReward.lenght == 0) return;
+
+    let nowMonth = new Date().getMonth();
+
+    arrReward.map((item, key) => {
+      let roundMonth = new Date(item.rewardAtDate).getMonth() + 1;
+      if (nowMonth === roundMonth) this.setState({ visible: true });
+    });
+  };
+
   render() {
     const layout = {
       labelCol: { span: 10 },
@@ -47,7 +63,6 @@ class ResultFormCID extends React.Component {
     let data = [];
 
     arrReward.map((item, key) => {
-      console.log(this.converMoneyFormat(item.rewardPrice));
       data.push({
         key: key,
         no: key + 1,
