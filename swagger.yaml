@@ -107,7 +107,13 @@ paths:
       operationId: "getNewsById"
       produces:
         - "application/json"
-      parameters: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          type: integer
+          minimum: 1
+          description: The ID of the user to return.
       responses:
         "200":
           description: "successful operation"
