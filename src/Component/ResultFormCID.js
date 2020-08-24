@@ -50,7 +50,7 @@ class ResultFormCID extends React.Component {
     arrReward.map((item, key) => {
       let roundMonth = new Date(item.rewardAtDate).getMonth() + 1;
 
-      if (nowMonth == roundMonth) {
+      if (nowMonth == roundMonth && item.rewardAtSeq == "1") {
         this.setState({
           visible: true,
           rewardNo: item.rewardNo,
